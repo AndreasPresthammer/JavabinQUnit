@@ -8,6 +8,11 @@ function asyncFunction() {
 	return deferred.promise;
 }
 
-test("asynctest", function() {
-	strictEqual(asyncFunction(), "Hurray!");
+asyncTest("asynctest", function() {
+	asyncFunction()
+		.then(function(result) {
+			strictEqual(result, "Hurray!");
+
+			start();
+		});
 });
