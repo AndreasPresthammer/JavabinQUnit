@@ -14,6 +14,15 @@ function myFunc() {
 		});
 }
 
-test("stubbing", function() {
-	myFunc();
+asyncTest("stubbing", function() {
+	networkService.query = function() {
+		return Q("Value I control");
+	}
+
+	myFunc()
+		.then(function(result) {
+			strictEqual(result, "VALUE I CONTROL");
+
+			start();
+		});
 });
