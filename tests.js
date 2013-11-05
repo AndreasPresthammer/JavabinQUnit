@@ -1,28 +1,19 @@
-var networkService = {
-	query: function() {
-		alert("Accessing the internet!");
+module("foo");
 
-		return Q("Some value from the internetz");
-	}
-}
+test("foo test 1", function() {
+	ok(true);
+});
 
-function myFunc() {
+test("foo test 2", function() {
+	ok(true);
+});
 
-	return networkService.query()
-		.then(function(result) {
-			return result.toUpperCase();
-		});
-}
+module("bar");
 
-asyncTest("stubbing", function() {
-	networkService.query = function() {
-		return Q("Value I control");
-	}
+test("bar test 1", function() {
+	ok(true);
+});
 
-	myFunc()
-		.then(function(result) {
-			strictEqual(result, "VALUE I CONTROL");
-
-			start();
-		});
+test("bar test 2", function() {
+	ok(true);
 });
