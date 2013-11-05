@@ -1,7 +1,7 @@
-test("passing test", function() {
-	ok(true, "Hurray!!");
-});
+function louder(str) {
+	return str.toUpperCase();
+}
 
-test("failing test", function() {
-	ok(false, "Sad trombone...");
+test("passing test", function() {
+	strictEqual(louder("foo"), "FOO");
 });
