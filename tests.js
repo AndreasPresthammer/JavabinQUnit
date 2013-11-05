@@ -1,7 +1,13 @@
-function louder(str) {
-	return str.toUpperCase();
-}
+var someObject = {
+	state: 123
+};
 
-test("passing test", function() {
-	strictEqual(louder("foo"), "FOO");
+test("state can make for tears", function() {
+	someObject.state = 321;
+
+	strictEqual(someObject.state, 321);
+});
+
+test("hmmmm....", function() {
+	strictEqual(someObject.state, 123);
 });
