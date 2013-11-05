@@ -1,18 +1,19 @@
-function asyncFunction() {
-	var deferred = Q.defer();
+var networkService = {
+	query: function() {
+		alert("Accessing the internet!");
 
-	setTimeout(function() {
-		deferred.resolve("Hurray!");
-	}, 3000);
-
-	return deferred.promise;
+		return Q("Some value from the internetz");
+	}
 }
 
-asyncTest("asynctest", function() {
-	asyncFunction()
-		.then(function(result) {
-			strictEqual(result, "Hurray!");
+function myFunc() {
 
-			start();
+	return networkService.query()
+		.then(function(result) {
+			return result.toUpperCase();
 		});
+}
+
+test("stubbing", function() {
+	myFunc();
 });
