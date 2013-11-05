@@ -1,13 +1,13 @@
-var someObject = {
-	state: 123
-};
+function asyncFunction() {
+	var deferred = Q.defer();
 
-test("state can make for tears", function() {
-	someObject.state = 321;
+	setTimeout(function() {
+		deferred.resolve("Hurray!");
+	}, 3000);
 
-	strictEqual(someObject.state, 321);
-});
+	return deferred.promise;
+}
 
-test("hmmmm....", function() {
-	strictEqual(someObject.state, 123);
+test("asynctest", function() {
+	strictEqual(asyncFunction(), "Hurray!");
 });
